@@ -1,0 +1,4 @@
+name = "Propal"
+description = "Diverses fonctions pour Goyave"
+core = 7.x
+package = Custom

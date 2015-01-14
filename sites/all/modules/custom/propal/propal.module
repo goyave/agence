@@ -1,0 +1,16 @@
+<?php
+function propal_form_alter(&$form, &$form_state, $form_id) {
+  //dpm($form_id );
+  if (($form_id == 'cinetv_node_form') || ($form_id == '3d_studio_node_form') || ($form_id == 'web_pub_node_form')) {
+    $form['field_geo_y']['#suffix'] = 'Cliquez sur la map pour choisir la position du point.<br /><div id="cine-tv-form" style="position: relative; background: url(\'/sites/all/themes/basic/images/source/web-bg.jpg\') center center; background-size: cover;"><img src="/sites/all/themes/basic/images/source/map.png" alt="">';
+    $form['#after_build'][] = 'propal_after_build';
+    // dpm($form);
+  }
+}
+
+
+function propal_after_build($form, &$form_state) {
+  $path = drupal_get_path('module', 'propal');
+  drupal_add_js ("$path/script.js");
+  return $form;
+}
